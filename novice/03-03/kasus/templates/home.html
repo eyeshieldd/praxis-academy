@@ -1,32 +1,18 @@
-
-
-<div class="container">
- <div class="starter-template">
- <h1>Tampilkan Data</h1>
- <table class="table table-striped">
- <thead>
- <tr>
- <td>No</td>
- <td>Nama</td>
- </tr>
- </thead>
- <tbody>
-{% for row in member %}
- <tr>
- <td>{{ row [0]}}</td>
- <td>{{ row [1]}}</td>
- </tr>
-{% else %}
- <tr>
- <td colspan="2">Unbelievable. No entries here so far</td>
- </tr>
-{% endfor %}
- </tbody>
- </table>
- </div>
-</div>
-
-
-<!-- /.container -->
-
-{% endblock %}
+<html>
+<body>
+    <table border=1>
+    <thead>
+    <th>Nama</th>
+    <th>Nama</th>
+    </thead>
+    {% for row in rows%}
+<tr>
+    <td> {{ row [0]}} </td>
+    <td> {{ row [1]}} </td>
+</tr>
+    {% endfor %}
+</table>
+    <p><a href="/"> Back to home page</a></p>
+    <p><a href="/"> Back to home page</a></p>
+</body>
+</html>

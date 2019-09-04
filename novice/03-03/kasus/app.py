@@ -1,18 +1,15 @@
-from flask import Flask, render_template
-from flask_mysqldb import MySQL
+from flask import Flask, render_template, request
+import mysql.connector as mariadb
 
 app = Flask(__name__)
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'jojo'
-app.config['MYSQL_PASSWORD'] = '123'
-app.config['MYSQL_DB'] = 'coba'
-mysql = MySQL(app)
 @app.route('/')
-def home():
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * member")
-    rv = cur.fetchall()
-    return render_template('home.html', member=rv)
+def list():
+    conn=mariadb.connect(user='jojo', password='123', database='coba')
+    cur=conn.cursor()
+    cur.execute("select * from member")
+    rows=cur.fetchall()
+    return render_template("home.html" , rows=rows)
+  
     
 if __name__ == '__main__':
     app.run(debug=True)
